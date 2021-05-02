@@ -12,13 +12,5 @@
     "axios": "^0.21.1",
     "dotenv": "^8.2.0",
     "inquirer": "^6.5.2"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/anniec9205/README-Generator.git"
-  },
-  "bugs": {
-    "url": "https://github.com/anniec9205/README-Generator/issues"
-  },
-  "homepage": "https://github.com/anniec9205/README-Generator#readme"
+  }
 }
