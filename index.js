@@ -1,8 +1,8 @@
 // TODO: Include packages needed for this application
 
 const inquirer = require("inquirer");
-const fs = require('fs');
 const axios = require("axios");
+const fs = require('fs');
 
 const generate = require('./utils/generateMarkdown');
 
@@ -51,10 +51,29 @@ const questions = [
     name: "tests",
     message: "What are the the project tests"
 },
-];
+]
 
 // TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
+inquirer
+    .prompt(questions)
+    .then(function(data){
+        const queryUrl = `https://api.github.com/users/${data.username}`;
+
+        axios.get(queryUrl).then(function(res) {
+            const githubInfo = {
+                name: res.data.name,
+                profile: res.data.html_url,email: res.data.email
+            };
+            
+          fs.writeFile("README.md", generate(data, githubInfo), function(err) {
+            if (err) {
+              throw err;
+            };
+    
+            console.log("Successfully created README file");
+          });
+        });
+});
 
 // TODO: Create a function to initialize app
 function init() {}
